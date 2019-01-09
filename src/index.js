@@ -2,10 +2,10 @@
 
 const automation    = require( "./translate" );
 const fs            = require( "fs" );
+const languages     = require( "./languages" );
 
-const LANGUAGE      = "ro";
 
-
+const LANGUAGE      = languages.Hungarian;
 
 
 

@@ -4,3 +4,7 @@ HOW TO USE:
 - RUN npm start
 - Your translated configurations will be present in translate.json
 - Enjoy
+
+
+NOTE:
+Max keys supported simultaneously ~300
