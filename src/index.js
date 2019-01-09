@@ -3,7 +3,7 @@
 const automation    = require( "./translate" );
 const fs            = require( "fs" );
 
-const LANGUAGE      = "hu";
+const LANGUAGE      = "ro";
 
 
 
@@ -25,7 +25,7 @@ function getStringToTranslate() {
         }
     }
 
-    return strings.join( ", " );
+    return strings.join( "; " );
 
 }
 
@@ -43,7 +43,7 @@ automation.translate( string, LANGUAGE ).then( res => {
 
     const stringsObj = JSON.parse( fs.readFileSync( "source.json", "utf8" ) );
 
-    const translatedStrings = res.replace( /['"]+/g, '' ).split( ',' );
+    const translatedStrings = res.replace( /['"]+/g, '' ).split( '; ' );
 
     for ( let key in stringsObj ) {
         if ( stringsObj.hasOwnProperty( key ) ) {
