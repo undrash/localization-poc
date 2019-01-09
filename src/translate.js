@@ -5,6 +5,7 @@ const { Builder, By, Key, until, Capabilities } = require( "selenium-webdriver" 
 
 
 
+
 module.exports = {
 
 
@@ -13,21 +14,19 @@ module.exports = {
         const capabilities = Capabilities.chrome();
 
 
-        capabilities.set( 'chromeOptions',{
-
-            'args': ['--headless', '--no-sandbox', 'window-size=1024,768' , '--disable-gpu', "--remote-debugging-port=4300"]
-
+        capabilities.set( "chromeOptions",{
+            "args": [ "--headless", "--no-sandbox", "window-size=1024,768" , "--disable-gpu", "--remote-debugging-port=4300" ]
         });
 
 
-        let driver = await new Builder().forBrowser( 'chrome' ).withCapabilities( capabilities ).build();
+        let driver = await new Builder().forBrowser( "chrome" ).withCapabilities( capabilities ).build();
 
 
-        await driver.get('https://translate.google.com/?hl=en&tab=TT');
+        await driver.get( "https://translate.google.com/?hl=en&tab=TT" );
 
-        await driver.wait( until.titleIs( 'Google Translate' ), 2000 );
+        await driver.wait( until.titleIs( "Google Translate" ), 2000 );
 
-        await driver.wait( until.elementLocated( By.id( 'source' ) ), 2000 );
+        await driver.wait( until.elementLocated( By.id( "source" ) ), 2000 );
 
         const element = await driver.findElement( By.id( "source" ) );
 

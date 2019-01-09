@@ -7,6 +7,8 @@ const LANGUAGE      = "hu";
 
 
 
+
+
 /**
  * Prepares the string that will be translated
  * @return {string}
@@ -40,7 +42,6 @@ const string = getStringToTranslate();
 automation.translate( string, LANGUAGE ).then( res => {
 
     const stringsObj = JSON.parse( fs.readFileSync( "source.json", "utf8" ) );
-
 
     const translatedStrings = res.replace( /['"]+/g, '' ).split( ',' );
 
