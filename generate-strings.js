@@ -14,3 +14,5 @@ for ( let key in stringsObj ) {
 fs.writeFileSync( "strings.txt", strings );
 
 console.log( strings );
+
+
