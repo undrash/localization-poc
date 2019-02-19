@@ -3,18 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>JSON Translator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Localization</h1>
+<div id="file-select-container">
+    <div class="dropzone" id="dropzone">
+        Drag your files here
+    </div>
 
-<form>
+    <p>OR</p>
+
     <div>
         <label>Select a file</label>
         <input type="file" accept="application/json,.json">
     </div>
-    <button type="submit">Get translation</button>
-</form>
+</div>
+
+<div id="loading-container">
+    Loading, please wait...
+</div>
+
+
+<div id="download-file-container">
+    <h1>Your file has been translated successfully!</h1>
+
+    <a id="download-file">Click to download translated file</a>
+</div>
 
 
 <script>
@@ -23,19 +38,27 @@
     const { ipcRenderer } = electron;
 
 
+    const fileSelectContainer = document.getElementById( "file-select-container" );
+    const loadingContainer = document.getElementById( "loading-container" );
+    const downloadFileContainer = document.getElementById( "download-file-container" );
+    let downloadFileBtn = document.getElementById( "download-file" );
 
-
-    document.querySelector( "form" ).addEventListener( "submit", (event) => {
-        event.preventDefault();
+    document.querySelector( "input" ).addEventListener( "change", (event) => {
 
         const { path } = document.querySelector( "input" ).files[0];
 
         ipcRenderer.send( "json:submit", path );
 
+        fileSelectContainer.style.display = "none";
+        loadingContainer.style.display = "block";
+
     });
 
 
     ipcRenderer.on( "json:translated", (event, result) => {
+
+        loadingContainer.style.display = "none";
+        downloadFileContainer.style.display = "block";
 
         download(JSON.stringify( result, null, 4 ), "translated.json", "application/json")
     });
@@ -43,21 +66,56 @@
 
     function download(data, filename, type) {
         let file = new Blob([data], {type: type});
-        if (window.navigator.msSaveOrOpenBlob) // IE10+
-            window.navigator.msSaveOrOpenBlob(file, filename);
-        else { // Others
-            let a = document.createElement("a"),
-                url = URL.createObjectURL(file);
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(function() {
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-            }, 0);
-        }
+
+        downloadFileBtn.href = URL.createObjectURL(file);
+        downloadFileBtn.download = filename;
     }
+
+
+//    function download(data, filename, type) {
+//        let file = new Blob([data], {type: type});
+//        if (window.navigator.msSaveOrOpenBlob) // IE10+
+//            window.navigator.msSaveOrOpenBlob(file, filename);
+//        else { // Others
+//            let a = document.createElement("a"),
+//                url = URL.createObjectURL(file);
+//            a.href = url;
+//            a.download = filename;
+//            document.body.appendChild(a);
+//            a.click();
+//            setTimeout(function() {
+//                document.body.removeChild(a);
+//                window.URL.revokeObjectURL(url);
+//            }, 0);
+//        }
+//    }
+
+
+    /** DRAG AND DROP */
+
+    const dropzone = document.getElementById( "dropzone" );
+
+    dropzone.addEventListener( "dragover", (e) => {
+        e.preventDefault();
+        dropzone.classList.add( "dragover" );
+    });
+
+    dropzone.addEventListener( "dragleave", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove( "dragover" );
+    });
+
+    dropzone.addEventListener( "drop", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove( "dragover" );
+
+        const { path } = e.dataTransfer.files[0];
+
+        ipcRenderer.send( "json:submit", path );
+
+        fileSelectContainer.style.display = "none";
+        loadingContainer.style.display = "block";
+    });
 
 </script>
 

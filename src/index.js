@@ -13,7 +13,7 @@ app.on( "ready", () => {
     mainWindow = new BrowserWindow({});
 
     mainWindow.loadURL( `file://${__dirname}/index.html` );
-    mainWindow.openDevTools();
+    // mainWindow.openDevTools();
 });
 
 
