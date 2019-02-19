@@ -1,118 +1,47 @@
-
-
-const automation    = require( "./translate" );
+const electron      = require( "electron" );
+const translate     = require( "./translate-manager" );
 const fs            = require( "fs" );
 const languages     = require( "./languages" );
 
+const { app, BrowserWindow, ipcMain } = electron;
 
-const LANGUAGE      = languages.Hungarian;
+const LANGUAGE      = languages.Romanian;
+let mainWindow      = null;
+
+app.on( "ready", () => {
+
+    mainWindow = new BrowserWindow({});
+
+    mainWindow.loadURL( `file://${__dirname}/index.html` );
+    mainWindow.openDevTools();
+});
 
 
+ipcMain.on( "json:submit", async (event, path) => {
+    console.log( path );
 
-/**
- * Prepares the string that will be translated
- * @return {string[]}
- */
-function getStringToTranslate() {
+    const fileContent = fs.readFileSync( path, "utf8" );
 
-    let result = [];
+    let sourceJSON = null;
 
-    const stringsObj = JSON.parse( fs.readFileSync( "source.json", "utf8" ) );
-
-    let strings = [];
-
-    const stringLimit = 100; // Maximum allowed translations per batch
-    let stringCount = 0;
-
-    for ( let key in stringsObj ) {
-        if ( stringsObj.hasOwnProperty( key ) ) {
-            strings.push( '"' + stringsObj[ key ] + '"' );
-
-            stringCount++;
-
-            if ( stringCount >= stringLimit ) {
-                result.push( strings.join( "; " ) );
-                strings = [];
-                stringCount = 0;
-            }
-        }
+    try {
+        sourceJSON = JSON.parse( fileContent );
+    } catch (err) {
+        console.error( "Invalid JSON provided. Bro." );
     }
 
-    if ( stringCount > 0 ) result.push( strings.join( "; " ) );
-
-
-    return result;
-
-}
-
-
-
-const translate = async (strings) => {
-
-    let result = "";
-
-    for ( let string of strings ) {
-
-        result += await automation.translate( string, LANGUAGE );
+    if ( ! sourceJSON ){
+        console.error( "Oops. No source JSON." );
+        return;
     }
 
-    writeResult( result );
-};
+    const strings = translate.getStringToTranslate( sourceJSON );
 
+    console.log( strings );
 
+    const result = await translate.translate( strings, LANGUAGE );
 
-function writeResult(res) {
+    const translatedJSON = translate.replaceWithTranslatedValues( result, sourceJSON );
 
-    const stringsObj = JSON.parse( fs.readFileSync( "source.json", "utf8" ) );
-
-    const translatedStrings = res.toString().replace( /['"]+/g, '' ).split( '; ' );
-
-    for ( let key in stringsObj ) {
-        if ( stringsObj.hasOwnProperty( key ) ) {
-            stringsObj[ key ] = translatedStrings[ Object.keys( stringsObj ).indexOf( key ) ];
-        }
-    }
-
-    fs.writeFileSync( 'translated.json', JSON.stringify( stringsObj, null, 4 ) );
-
-    console.log( stringsObj );
-}
-
-
-
-/** Get the string */
-const strings = getStringToTranslate();
-
-/** Get the translations - ASYNC */
-translate( strings )
-    .then( () => console.info( "Translation finished!" ) )
-    .catch( err => console.error( err ) );
-
-
-
-
-
-// /**
-//  * Perform the translation
-//  */
-// automation.translate( string, LANGUAGE ).then( res => {
-//
-//     const stringsObj = JSON.parse( fs.readFileSync( "source.json", "utf8" ) );
-//
-//     const translatedStrings = res.replace( /['"]+/g, '' ).split( '; ' );
-//
-//     for ( let key in stringsObj ) {
-//         if ( stringsObj.hasOwnProperty( key ) ) {
-//             stringsObj[ key ] = translatedStrings[ Object.keys( stringsObj ).indexOf( key ) ];
-//         }
-//     }
-//
-//     fs.writeFileSync( 'translated.json', JSON.stringify( stringsObj, null, 4 ) );
-//
-//     console.log( stringsObj );
-//
-// });
-
-
-
-
+    mainWindow.webContents.send( "json:translated", translatedJSON );
+});

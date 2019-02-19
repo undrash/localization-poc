@@ -4,7 +4,8 @@
   "description": "Localization for application JSON configs",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "translate": "node src/index.js",
+    "start": "electron ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/gasparandr/localization-poc#readme",
   "dependencies": {
+    "electron": "^4.0.5",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }

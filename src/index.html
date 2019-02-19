@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Translator</title>
+</head>
+<body>
+
+<h1>Localization</h1>
+
+<form>
+    <div>
+        <label>Select a file</label>
+        <input type="file" accept="application/json,.json">
+    </div>
+    <button type="submit">Get translation</button>
+</form>
+
+
+<script>
+    const electron = require( "electron" );
+
+    const { ipcRenderer } = electron;
+
+
+
+
+    document.querySelector( "form" ).addEventListener( "submit", (event) => {
+        event.preventDefault();
+
+        const { path } = document.querySelector( "input" ).files[0];
+
+        ipcRenderer.send( "json:submit", path );
+
+    });
+
+
+    ipcRenderer.on( "json:translated", (event, result) => {
+
+        download(JSON.stringify( result, null, 4 ), "translated.json", "application/json")
+    });
+
+
+    function download(data, filename, type) {
+        let file = new Blob([data], {type: type});
+        if (window.navigator.msSaveOrOpenBlob) // IE10+
+            window.navigator.msSaveOrOpenBlob(file, filename);
+        else { // Others
+            let a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function() {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        }
+    }
+
+</script>
+
+</body>
+</html>
