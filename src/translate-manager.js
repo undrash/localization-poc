@@ -62,7 +62,9 @@ module.exports = {
         console.log( stringsObj );
     },
 
-    replaceWithTranslatedValues: (res, { ...stringsObj }) => {
+    replaceWithTranslatedValues: (res, obj) => {
+
+        const stringsObj = JSON.parse(JSON.stringify(obj));
 
         const translatedStrings = res.toString().replace( /['"]+/g, '' ).split( '; ' );
 

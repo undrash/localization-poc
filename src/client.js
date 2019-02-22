@@ -20,12 +20,18 @@ document.querySelector( "input" ).addEventListener( "change", (event) => {
 });
 
 
-ipcRenderer.on( "json:translated", (event, result) => {
+ipcRenderer.on( "translate:success", (event, result) => {
 
     loadingContainer.style.display = "none";
     downloadFileContainer.style.display = "block";
 
     download(JSON.stringify( result, null, 4 ), "translated.json", "application/json")
+});
+
+ipcRenderer.on( "translate:error", (event, message) => {
+
+    document.body.innerHTML = "";
+    document.body.innerText = message;
 });
 
 

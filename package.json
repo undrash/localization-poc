@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "translate": "node src/index.js",
-    "start": "electron ./src/index.js"
+    "start": "electron .",
+    "dist": "build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,19 @@
   },
   "homepage": "https://github.com/gasparandr/localization-poc#readme",
   "dependencies": {
-    "electron": "^4.0.5",
     "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "electron": "^4.0.5",
+    "electron-builder": "^20.38.5"
+  },
+  "build": {
+    "appId": "com.localization.poc",
+    "win": {
+      "target": "nsis"
+    },
+    "extraFiles": [
+      "chromedriver.exe"
+    ]
   }
 }
