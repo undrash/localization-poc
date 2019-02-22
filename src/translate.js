@@ -40,9 +40,9 @@ module.exports = {
 
         await driver.wait( until.elementLocated( By.xpath( `//div[contains(@class, "language-list-unfiltered-langs-tl_list")]//div[contains(@class, "language_list_item_wrapper-${ language }")]` ) ), 3000 );
 
-        const hungarianLangBtn = await driver.findElement( By.xpath( `//div[contains(@class, "language-list-unfiltered-langs-tl_list")]//div[contains(@class, "language_list_item_wrapper-${ language }")]` ) );
+        const targetLangBtn = await driver.findElement( By.xpath( `//div[contains(@class, "language-list-unfiltered-langs-tl_list")]//div[contains(@class, "language_list_item_wrapper-${ language }")]` ) );
 
-        await hungarianLangBtn.click();
+        await targetLangBtn.click();
 
         await driver.wait( until.elementLocated( By.className( "translation" ) ), 2000 );
 

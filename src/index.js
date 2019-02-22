@@ -5,7 +5,7 @@ const languages     = require( "./languages" );
 
 const { app, BrowserWindow, ipcMain } = electron;
 
-const LANGUAGE      = languages.Romanian;
+const LANGUAGE      = languages.Hungarian;
 let mainWindow      = null;
 
 app.on( "ready", () => {
