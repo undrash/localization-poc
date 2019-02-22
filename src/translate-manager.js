@@ -36,12 +36,14 @@ module.exports = {
         return result;
     },
 
-    translate: async (strings, language) => {
+    translate: async (strings, language, statusUpdate) => {
         let result = "";
 
         for ( let string of strings ) {
 
             result += await automation.translate( string, language );
+
+            statusUpdate();
         }
 
         return result;

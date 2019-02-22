@@ -35,6 +35,14 @@ ipcRenderer.on( "translate:error", (event, message) => {
 });
 
 
+ipcRenderer.on( "loading:status", (event, status) => {
+
+    let flag = document.createElement( "span" );
+    flag.innerText = `${ status.processed / status.total * 100  }%`;
+    document.body.appendChild( flag );
+});
+
+
 function download(data, filename, type) {
     let file = new Blob([data], {type: type});
 

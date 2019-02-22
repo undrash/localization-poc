@@ -8,6 +8,12 @@ const { app, BrowserWindow, ipcMain } = electron;
 const LANGUAGE      = languages.Hungarian;
 let mainWindow      = null;
 
+
+let batchLength         = 0;
+let processedBatches    = 0;
+
+
+
 app.on( "ready", () => {
 
     mainWindow = new BrowserWindow({});
@@ -40,7 +46,9 @@ ipcMain.on( "json:submit", async (event, path) => {
 
         console.log( strings );
 
-        const result = await translate.translate( strings, LANGUAGE );
+        batchLength = strings.length;
+
+        const result = await translate.translate( strings, LANGUAGE, statusUpdate );
 
         const translatedJSON = translate.replaceWithTranslatedValues( result, sourceJSON );
 
@@ -50,3 +58,10 @@ ipcMain.on( "json:submit", async (event, path) => {
         console.log( err.message );
     }
 });
+
+
+
+
+function statusUpdate() {
+    mainWindow.webContents.send( "loading:status", { total: batchLength, processed: ++processedBatches } );
+}
