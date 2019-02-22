@@ -1,0 +1,25 @@
+
+
+
+#select-language-container {
+    display: none;
+    background-color: #996f15;
+    width: 100%;
+    height: 100vh;
+}
+
+
+#select-language {
+    display: block;
+    margin: auto;
+    width: 150px;
+}
+
+
+#translate-button {
+    display: block;
+    width: 150px;
+    height: 70px;
+    background-color: #fff;
+    margin: auto;
+}

@@ -13,8 +13,8 @@ module.exports = {
 
         let strings = [];
 
-        const stringLimit = 100; // Maximum allowed translations per batch
-        let stringCount = 0;
+        const stringLimit   = 100; // Maximum allowed translations per batch
+        let stringCount     = 0;
 
         for ( let key in stringsObj ) {
             if ( stringsObj.hasOwnProperty( key ) ) {
@@ -81,6 +81,12 @@ module.exports = {
 
 };
 
+
+function sleep(ms){
+    return new Promise(resolve=>{
+        setTimeout(resolve,ms)
+    })
+}
 
 
 

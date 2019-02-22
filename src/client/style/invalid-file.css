@@ -1,0 +1,16 @@
+
+
+
+#error-invalid-file-container {
+    display: none;
+    background-color: #992e1a;
+    width: 100%;
+    height: 100vh;
+}
+
+
+#error-try-again-btn {
+    width: 150px;
+    height: 70px;
+    background-color: #fff;
+}

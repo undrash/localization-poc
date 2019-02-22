@@ -1,0 +1,16 @@
+
+
+
+#file-translated-container {
+    display: none;
+    background-color: #722899;
+    width: 100%;
+    height: 100vh;
+}
+
+
+#save-file-btn {
+    width: 160px;
+    height: 70px;
+    background-color: red;
+}

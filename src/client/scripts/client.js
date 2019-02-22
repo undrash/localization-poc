@@ -4,7 +4,7 @@ const { ipcRenderer } = electron;
 
 
 const fileSelectContainer = document.getElementById( "file-select-container" );
-const loadingContainer = document.getElementById( "loading-container" );
+const loadingContainer = document.getElementById( "loading-container-old" );
 const downloadFileContainer = document.getElementById( "download-file-container" );
 let downloadFileBtn = document.getElementById( "download-file" );
 

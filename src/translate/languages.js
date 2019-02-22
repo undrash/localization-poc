@@ -84,7 +84,7 @@ module.exports = {
     Sindhi: "si",
     Sinhala: "sk",
     Slovak: "sl",
-    Slovenian: "",
+    Slovenian: "slv",
     Somali: "so",
     Spanish: "es",
     Sundanese: "su",
