@@ -20,6 +20,14 @@
     left: 275px;
 }
 
+.error {
+    background-image: url(img/error-icon-single.svg);
+}
+
+.error-text {
+    color: #ee3e57;
+}
+
 .notification-text {
     display: inline-block;
     color: #777C9D;
@@ -28,7 +36,6 @@
 .language-wrapper {
     margin: 130px auto 70px auto;
     width: 525px;
-    /*margin: auto;*/
 }
 
 .language-label {
