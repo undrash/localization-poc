@@ -46,7 +46,7 @@ body {
     border: none;
 }
 
-.primary-button:focus, .secondary-button:focus, dropdown  {
+.primary-button:focus, .secondary-button:focus, .dropdown  {
     outline: 0;
 }
 

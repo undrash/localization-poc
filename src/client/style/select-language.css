@@ -1,8 +1,5 @@
-
-
-
 #select-language-container {
-    display: block;
+    display: none;
     position: relative;
     text-align: center;
 }

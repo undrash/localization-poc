@@ -1,24 +1,39 @@
-
-
-
 #loading-container {
-    display: none;
-    background-color: #7a9981;
-    width: 100%;
-    height: 100vh;
+    display: block;
+    width: 330px;
+    margin: 110px auto 0 auto;
+    text-align: center;
 }
-
 
 #progress-bar-container {
-    width: 50%;
-    height: 25px;
-    background-color: red;
-    margin: auto;
+    padding-top: 50px;
+    position: relative;
 }
-
 
 #progress-bar {
-    width: 0;
-    height: 100%;
-    background-color: blue;
+    margin: auto;
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    border: 8px solid #0E1022;
+    color: #C3C5D3;
+    font-weight: bold;
 }
+
+.progress-label {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 60px;
+}
+
+.loaded {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    border: 8px solid #0E1022;
+    background: linear-gradient(#0087FF, #00BCFF);
+    position: absolute;
+    top: 50px;
+    left: 85px;
+}
+
