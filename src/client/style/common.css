@@ -1,0 +1,93 @@
+body {
+    background-color: #191C37;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url(fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url(fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url(fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url(fonts/Montserrat-Semibold.ttf);
+}
+
+.primary-button {
+    padding: 20px 60px;
+    background-color: #0087FF;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color 0.3s ease-in-out;
+    border: none;
+}
+
+.primary-button:hover {
+    background-color: #1264f9;
+    cursor: pointer;
+}
+
+.primary-button:active, .secondary-button:active {
+    outline: none;
+    border: none;
+}
+
+.primary-button:focus, .secondary-button:focus  {
+    outline: 0;
+}
+
+.secondary-button {
+    padding: 20px 0;
+    width: 290px;
+    background-color: #97CB5E;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color 0.3s ease-in-out;
+    border: none;
+}
+
+.secondary-button:hover {
+    background-color: #68bb42;
+    cursor: pointer;
+}
+
+.status-label {
+    color: #C3C5D3;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.status-icon {
+    margin-bottom: 20px;
+}
+
+.basic-description {
+    font-size: 14px;
+    line-height: 23px;
+    color: #4D516F;
+}
+
+.status-wrapper {
+    width: 400px;
+    height: auto;
+    /*background-color: #4D516F;*/
+    margin: 80px auto 0 auto;
+}

@@ -16,10 +16,13 @@ let FILE_SUBMITTED      = null;
 
 app.on( "ready", () => {
 
-    mainWindow = new BrowserWindow({});
+    mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600
+    });
 
     mainWindow.loadURL( `file://${__dirname}/index.html` );
-    // mainWindow.openDevTools();
+    mainWindow.openDevTools();
 });
 
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="9px" viewBox="0 0 15 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>dropdown</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Valid" transform="translate(-818.000000, -511.000000)" fill="#4C506D">
+            <g id="Group-8" transform="translate(538.000000, 324.000000)">
+                <g id="Group-7" transform="translate(0.000000, 134.000000)">
+                    <g id="Group-6" transform="translate(0.000000, 28.000000)">
+                        <path d="M284.838676,37 C284.383357,37 283.927715,36.8301832 283.571715,36.4885938 C282.835852,35.7812953 282.806508,34.6046374 283.505932,33.8605072 L287.619929,29.4869904 L283.510124,25.1437863 C282.80812,24.4022637 282.833917,23.2256058 283.567846,22.5156997 C284.302096,21.8057936 285.465869,21.8321951 286.167873,22.5740437 L291.490142,28.1975558 C292.168606,28.9146327 292.169896,30.0440287 291.494334,30.7633872 L286.172388,36.4221013 C285.81026,36.8057374 285.325597,37 284.838676,37 Z" id="dropdown" transform="translate(287.500000, 29.500000) rotate(-270.000000) translate(-287.500000, -29.500000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
