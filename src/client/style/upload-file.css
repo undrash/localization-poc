@@ -2,16 +2,36 @@
 
 
 #upload-file-container {
-    display: block;
-    background-color: rebeccapurple;
-    width: calc(100% - 50px);
-    height: calc(100vh - 50px );
-    padding: 25px;
+    display: none;
+    text-align: center;
+}
+
+.upload-wrapper {
+    padding-top: 110px;
+}
+
+.instruction {
+    color: #84879E;
+    font-size: 14px;
+    margin-bottom: 40px;
+    font-weight: normal;
+}
+
+.option {
+    font-weight: bold;
+    color: #4D516F;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.file-type {
+    font-weight: bold;
+
 }
 
 #upload-file-drop-zone {
-    border: 1px dashed black;
-    width: 100%;
-    height: 100%;
-    background-color: #5b94ff;
+    width: 450px;
+    height: 400px;
+    background: url("img/drop-area.svg") center no-repeat;
+    margin: 85px auto 0 auto;
 }

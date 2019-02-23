@@ -19,16 +19,29 @@
 
     <div id="upload-file-drop-zone">
 
-        <p>Drag and drop your .json file</p>
-        <p>OR</p>
+        <div class="upload-wrapper">
 
-        <input id="upload-file-input" type="file" accept="application/json,.json">
+            <p class="instruction">Drag and drop your <span class="file-type">.json</span> file</p>
+            <p class="option">OR</p>
+
+            <label class="primary-button" for="upload-file-input">Select file to upload</label>
+            <input style="display: none"  id="upload-file-input" type="file" accept="application/json,.json">
+
+        </div>
+
     </div>
 
 </div>
 
 
 <div id="select-language-container">
+
+    <img class="back-arrow" src="src/client/style/img/back-arrow.svg">
+
+    <div class="notification">
+        <!--<img src="src/client/style/img/success-icon-single.svg">-->
+        <p class="basic-description notification-text">Valid Json file provided</p>
+    </div>
 
     <select name="select language" id="select-language">
         <option value="" disabled selected>Select Language</option>
@@ -145,9 +158,19 @@
 
 <div id="error-invalid-file-container">
 
-    <p>Error</p>
+    <img class="back-arrow" src="src/client/style/img/back-arrow.svg">
 
-    <button id="error-try-again-btn">Try Again</button>
+    <div class="status-wrapper">
+        
+        <img class="status-icon" src="src/client/style/img/error-icon.svg">
+
+        <p class="status-label">Invalid Json file provided.</p>
+        <p class="basic-description">Check if the selected file was a json file format or explain why can a file be wrong.</p>
+
+        <button id="error-try-again-btn" class="primary-button">Try Again</button>
+
+    </div>
+
 </div>
 
 
@@ -162,9 +185,20 @@
 
 <div id="file-translated-container">
 
-    <p>Your file has been successfully translated...</p>
+    <img class="back-arrow" src="src/client/style/img/back-arrow.svg">
 
-    <a id="save-file-btn">Save File</a>
+   <div class="status-wrapper">
+
+       <img class="status-icon" src="src/client/style/img/success-icon.svg">
+
+       <p class="status-label">Translation Successful!</p>
+       <p class="basic-description">Your file has been successfully translated to Spanish.</p>
+
+       <a><button id="save-file-btn" class="secondary-button">Save File</button></a>
+
+       <!--<a id="save-file-btn" class="primary-button">Save File</a>-->
+
+   </div>
 </div>
 
 
