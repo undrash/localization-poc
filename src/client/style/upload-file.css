@@ -1,6 +1,4 @@
 
-
-
 #upload-file-container {
     display: none;
     text-align: center;
@@ -26,7 +24,6 @@
 
 .file-type {
     font-weight: bold;
-
 }
 
 #upload-file-drop-zone {
@@ -34,4 +31,9 @@
     height: 400px;
     background: url("img/drop-area.svg") center no-repeat;
     margin: 85px auto 0 auto;
+    transition: background 0.5s ease-in-out;
+}
+
+#upload-file-drop-zone:hover {
+    background: url("img/drop-area-blue.svg") center no-repeat;
 }

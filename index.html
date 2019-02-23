@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>JSON Translator</title>
     <link rel="stylesheet" href="src/client/style/style-reset.css">
+    <link rel="stylesheet" href="src/client/style/style-reset-2.css">
     <link rel="stylesheet" href="src/client/style/common.css">
     <link rel="stylesheet" href="src/client/style/upload-file.css">
     <link rel="stylesheet" href="src/client/style/select-language.css">
@@ -37,13 +38,16 @@
 <div id="select-language-container">
 
     <img class="back-arrow" src="src/client/style/img/back-arrow.svg">
+    <!--<div class="back-arrow"></div>-->
 
     <div class="notification">
-        <!--<img src="src/client/style/img/success-icon-single.svg">-->
         <p class="basic-description notification-text">Valid Json file provided</p>
     </div>
 
-    <select name="select language" id="select-language">
+    <div class="language-wrapper">
+
+        <label class="language-label">Select your target language</label>
+        <select class="dropdown" name="select language" id="select-language">
         <option value="" disabled selected>Select Language</option>
         <option value="af">Afrikaans</option>
         <option value="sq">Albanian</option>
@@ -152,7 +156,14 @@
         <option value="zu">Zulu</option>
     </select>
 
-    <button id="translate-button">Translate</button>
+        <button class="primary-button" id="translate-button">Translate</button>
+
+    </div>
+
+    <p class="basic-description translate-info">Your source language for <span class="file-type">jsonfilename.json</span> will be detected automatically.</p>
+
+
+
 </div>
 
 

@@ -1,7 +1,7 @@
 body {
     background-color: #191C37;
     font-family: 'Montserrat', sans-serif;
-    padding: 0;
+    padding: 20px;
 }
 
 @font-face {
@@ -41,12 +41,12 @@ body {
     cursor: pointer;
 }
 
-.primary-button:active, .secondary-button:active {
+.primary-button:active, .secondary-button:active, .dropdown {
     outline: none;
     border: none;
 }
 
-.primary-button:focus, .secondary-button:focus  {
+.primary-button:focus, .secondary-button:focus, dropdown  {
     outline: 0;
 }
 
@@ -88,6 +88,19 @@ body {
 .status-wrapper {
     width: 400px;
     height: auto;
-    /*background-color: #4D516F;*/
     margin: 80px auto 0 auto;
+}
+
+.back-arrow {
+    padding: 10px;
+    display: block;
+    background-image: url("img/back-arrow.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.back-arrow:hover {
+    background-color: #1E223E;
+    cursor: pointer;
 }
