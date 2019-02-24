@@ -1,7 +1,7 @@
 
 const ProgressBar           = require( "progressbar.js" );
 
-export const loadingContainer   = document.getElementById( "loading-container" );
+const loadingContainer   = document.getElementById( "loading-container" );
 const progressBarContainer      = document.getElementById( "progress-bar-container" );
 const progressBarLabel          = document.getElementById( "progress-bar-label" );
 
@@ -23,7 +23,7 @@ const progressBar = new ProgressBar.Circle( progressBarContainer, {
 });
 
 
-export function resetLoading() {
+function resetLoading() {
     progressBar.set( 0 );
     progressBarLabel.innerText = "0%";
 }

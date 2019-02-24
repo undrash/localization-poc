@@ -23,7 +23,7 @@ app.on( "ready", () => {
     });
 
     mainWindow.loadURL( `file://${__dirname}/index.html` );
-    mainWindow.openDevTools();
+    // mainWindow.openDevTools();
 
 
     tray = new Tray( `${__dirname}/src/client/style/img/icons/windows-icon.png` );
@@ -82,7 +82,8 @@ ipcMain.on( "json:submit", async (event, path) => {
 
         console.log( strings );
 
-        batchLength = strings.length;
+        batchLength         = strings.length;
+        processedBatches    = 0;
 
         const result = await translate.translate( strings, LANGUAGE, statusUpdate );
 
@@ -131,8 +132,8 @@ ipcMain.on( "file:translate", async (event, language) => {
 
         console.log( strings );
 
-        batchLength = strings.length;
-
+        batchLength         = strings.length;
+        processedBatches    = 0;
 
         // /** TESTING */
         // const interval = setInterval( () => {
