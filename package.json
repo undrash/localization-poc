@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/gasparandr/localization-poc#readme",
   "dependencies": {
+    "progressbar.js": "^1.0.1",
     "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "devDependencies": {

@@ -37,15 +37,12 @@
 
 <div id="select-language-container">
 
-    <img class="back-arrow" src="src/client/style/img/back-arrow.svg">
+    <img id="select-language-back-btn" class="back-arrow" src="src/client/style/img/back-arrow.svg">
 
-    <div class="notification">
-        <p class="basic-description notification-text">Valid Json file provided</p>
+    <div id="select-language-notification" class="notification">
+        <p id="select-language-notification-text" class="basic-description notification-text">Valid JSON file provided</p>
     </div>
 
-    <!--<div class="notification error">-->
-        <!--<p class="basic-description notification-text error-text">Please select a language</p>-->
-    <!--</div>-->
 
     <div class="language-wrapper">
 
@@ -163,7 +160,7 @@
 
     </div>
 
-    <p class="basic-description translate-info">Your source language for <span class="file-type">jsonfilename.json</span> will be detected automatically.</p>
+    <p class="basic-description translate-info">Your source language for <span id="uploaded-file-title" class="file-type">jsonfilename.json</span> will be detected automatically.</p>
 
 
 
@@ -172,7 +169,7 @@
 
 <div id="error-invalid-file-container">
 
-    <img class="back-arrow" src="src/client/style/img/back-arrow.svg">
+    <img id="invalid-file-back-btn" class="back-arrow" src="src/client/style/img/back-arrow.svg">
 
     <div class="status-wrapper">
         
@@ -193,11 +190,8 @@
     <p class="status-label">Translation in progress...</p>
     <p class="basic-description">Please wait while your file is being translated.</p>
     <div id="progress-bar-container">
-        <div id="progress-bar" class="progress-bar">
-            <p class="progress-label">25%</p>
-        </div>
+        <p id="progress-bar-label" class="progress-label">0%</p>
 
-        <!--<div class="loaded"></div>-->
     </div>
 
 </div>
@@ -205,7 +199,7 @@
 
 <div id="file-translated-container">
 
-    <img class="back-arrow" src="src/client/style/img/back-arrow.svg">
+    <img id="file-translate-back-btn" class="back-arrow" src="src/client/style/img/back-arrow.svg">
 
    <div class="status-wrapper">
 
@@ -214,46 +208,12 @@
        <p class="status-label">Translation Successful!</p>
        <p class="basic-description">Your file has been successfully translated to Spanish.</p>
 
-       <a><button id="save-file-btn" class="secondary-button">Save File</button></a>
-
-       <!--<a id="save-file-btn" class="primary-button">Save File</a>-->
+       <a id="save-file-btn"><button class="secondary-button">Save File</button></a>
 
    </div>
 </div>
 
 
-
-
-
-<!--OLD CODE-->
-
-
-<!--<div id="file-select-container">-->
-    <!--<div class="dropzone" id="dropzone">-->
-        <!--Drag your files here-->
-    <!--</div>-->
-
-    <!--<p>OR</p>-->
-
-    <!--<div>-->
-        <!--<label>Select a file</label>-->
-        <!--<input type="file" accept="application/json,.json">-->
-    <!--</div>-->
-<!--</div>-->
-
-<!--<div id="loading-container-old">-->
-    <!--Loading, please wait...-->
-<!--</div>-->
-
-
-<!--<div id="download-file-container">-->
-    <!--<h1>Your file has been translated successfully!</h1>-->
-
-    <!--<a id="download-file">Click to download translated file</a>-->
-<!--</div>-->
-
-
-<!--<script src="src/client/scripts/client.js"></script>-->
 
 <script src="src/client/scripts/globals.js"></script>
 <script src="src/client/scripts/uploadFile.js"></script>

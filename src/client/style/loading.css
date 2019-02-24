@@ -1,5 +1,5 @@
 #loading-container {
-    display: block;
+    display: none;
     width: 330px;
     margin: 110px auto 0 auto;
     text-align: center;
@@ -8,6 +8,11 @@
 #progress-bar-container {
     padding-top: 50px;
     position: relative;
+    margin: auto;
+    width: 160px;
+    height: 160px;
+    color: #C3C5D3;
+    font-weight: bold;
 }
 
 #progress-bar {
@@ -24,6 +29,9 @@
     font-weight: 600;
     font-size: 20px;
     margin-top: 60px;
+    position: absolute;
+    left: 59px;
+    top: 59px;
 }
 
 .loaded {

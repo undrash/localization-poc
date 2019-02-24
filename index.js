@@ -1,13 +1,14 @@
 const electron      = require( "electron" );
 const translate     = require( "./src/translate/translate-manager" );
 const fs            = require( "fs" );
+const path          = require( "path" );
 const languages     = require( "./src/translate/languages" );
 
-const { app, BrowserWindow, ipcMain } = electron;
+const { app, BrowserWindow, ipcMain, Tray, Menu } = electron;
 
 const LANGUAGE      = languages.Hungarian;
 let mainWindow      = null;
-
+let tray            = null;
 
 let batchLength         = 0;
 let processedBatches    = 0;
@@ -23,8 +24,40 @@ app.on( "ready", () => {
 
     mainWindow.loadURL( `file://${__dirname}/index.html` );
     mainWindow.openDevTools();
+
+
+    tray = new Tray( `${__dirname}/src/client/style/img/icons/windows-icon.png` );
+
+    tray.setToolTip( "localization app" );
+
+
+    tray.on( "click", () => {
+
+        if ( mainWindow.isVisible() ) {
+            mainWindow.hide();
+        } else {
+            mainWindow.show();
+        }
+
+    });
+
+    tray.on( "right-click", () => {
+
+        const menuConfig = Menu.buildFromTemplate([
+            {
+                label: "Quit",
+                click: () => app.quit()
+            }
+        ]);
+
+        tray.popUpContextMenu( menuConfig );
+
+    });
 });
 
+app.on( "browser-window-created", (e, window) => {
+    window.setMenu(null);
+});
 
 ipcMain.on( "json:submit", async (event, path) => {
     try {
@@ -65,11 +98,12 @@ ipcMain.on( "json:submit", async (event, path) => {
 
 
 
-ipcMain.on( "file:submit", (event, path) => {
+ipcMain.on( "file:submit", (event, filePath) => {
 
     let sourceJSON = null;
 
-    const fileContent = fs.readFileSync( path, "utf8" );
+    const fileContent = fs.readFileSync( filePath, "utf8" );
+    const fileName = path.parse( filePath ).base;
 
     try {
         sourceJSON = JSON.parse( fileContent );
@@ -83,6 +117,7 @@ ipcMain.on( "file:submit", (event, path) => {
 
         FILE_SUBMITTED = sourceJSON;
 
+        mainWindow.webContents.send( "file:title", fileName );
         mainWindow.webContents.send( "file:validate", true );
     }
 });
@@ -97,6 +132,21 @@ ipcMain.on( "file:translate", async (event, language) => {
         console.log( strings );
 
         batchLength = strings.length;
+
+
+        // /** TESTING */
+        // const interval = setInterval( () => {
+        //
+        //     if ( processedBatches < batchLength ) {
+        //         statusUpdate();
+        //     } else {
+        //         // mainWindow.webContents.send( "translate:success", { "translation": "success" } );
+        //         clearInterval( interval );
+        //     }
+        //
+        // }, 2500 );
+
+
 
         const result = await translate.translate( strings, language, statusUpdate );
 

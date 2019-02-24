@@ -21,12 +21,14 @@ uploadFileInput.addEventListener( "change", () => {
 
 uploadFileDropZone.addEventListener( "dragover", (e) => {
     e.preventDefault();
+    uploadFileDropZone.classList.add( "dragover" );
 });
 
 
 
 uploadFileDropZone.addEventListener( "dragleave", (e) => {
     e.preventDefault();
+    uploadFileDropZone.classList.remove( "dragover" );
 });
 
 

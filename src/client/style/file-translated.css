@@ -4,5 +4,6 @@
 }
 
 #save-file-btn {
-    margin-top: 70px;
+    margin-top: 25px;
+    display: block;
 }
