@@ -24,6 +24,15 @@ body {
     src: url("./fonts/Montserrat-Semibold.ttf") format("truetype");
 }
 
+select:focus {
+    outline: none;
+}
+
+/*select option {*/
+    /*line-height: 20px;*/
+    /*padding: 0 10px;*/
+/*}*/
+
 .primary-button {
     padding: 20px 60px;
     background-color: #0087FF;

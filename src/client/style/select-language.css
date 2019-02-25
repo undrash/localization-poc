@@ -44,10 +44,11 @@
 }
 
 .dropdown {
+    -webkit-appearance: none;
     border: 2px solid #4C506D;
     background-color: #191C37;
     height: 57px;
-    padding: 20px 0 0 20px;
+    padding-left: 20px;
     width: 320px;
     float: left;
     color: #777C9D;

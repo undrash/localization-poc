@@ -31,7 +31,7 @@
     height: 400px;
     background: url("img/drop-area.svg") center no-repeat;
     margin: 85px auto 0 auto;
-    transition: background 0.5s ease-in-out;
+    transition: background 0.2s ease-in-out;
 }
 
 #upload-file-drop-zone.dragover {
