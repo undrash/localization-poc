@@ -23,6 +23,14 @@ const progressBar = new ProgressBar.Circle( progressBarContainer, {
 });
 
 
+
+function initializeProgressBar() {
+    animateIncrement( 0, 4, 150 );
+    progressBar.animate( 0.04 );
+}
+
+
+
 function resetLoading() {
     progressBar.set( 0 );
     progressBarLabel.innerText = "0%";

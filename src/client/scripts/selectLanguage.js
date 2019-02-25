@@ -8,9 +8,10 @@ const selectLanguageBackBtn         = document.getElementById( "select-language-
 
 
 translateButton.addEventListener( "click", () => {
-    const language = selectLanguage.options[ selectLanguage.selectedIndex ].value;
+    const languageId        = selectLanguage.options[ selectLanguage.selectedIndex ].value;
+    const languageString    = selectLanguage.options[ selectLanguage.selectedIndex ].innerText;
 
-    if ( ! language ) {
+    if ( ! languageId ) {
 
         selectLanguageNotification.classList.add( "error" );
 
@@ -19,10 +20,12 @@ translateButton.addEventListener( "click", () => {
         return console.error( "No language selected." )
     }
 
-    ipcRenderer.send( "file:translate", language );
+    ipcRenderer.send( "file:translate", { languageId, languageString } );
 
     selectLanguageContainer.style.display   = "none";
     loadingContainer.style.display          = "block";
+
+    initializeProgressBar();
 });
 
 

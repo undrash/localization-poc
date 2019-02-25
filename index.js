@@ -6,20 +6,22 @@ const languages     = require( "./src/translate/languages" );
 
 const { app, BrowserWindow, ipcMain, Tray, Menu } = electron;
 
-const LANGUAGE      = languages.Hungarian;
-let mainWindow      = null;
-let tray            = null;
+const LANGUAGE          = languages.Hungarian;
+let mainWindow          = null;
+let tray                = null;
 
 let batchLength         = 0;
 let processedBatches    = 0;
 
 let FILE_SUBMITTED      = null;
 
+
 app.on( "ready", () => {
 
     mainWindow = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        icon: `${__dirname}/src/client/style/img/icons/windows-icon-64.png`
     });
 
     mainWindow.loadURL( `file://${__dirname}/index.html` );
@@ -125,7 +127,7 @@ ipcMain.on( "file:submit", (event, filePath) => {
 
 
 
-ipcMain.on( "file:translate", async (event, language) => {
+ipcMain.on( "file:translate", async (event, languageData) => {
     try {
 
         const strings = translate.getStringToTranslate( FILE_SUBMITTED );
@@ -148,12 +150,11 @@ ipcMain.on( "file:translate", async (event, language) => {
         // }, 2500 );
 
 
-
-        const result = await translate.translate( strings, language, statusUpdate );
+        const result = await translate.translate( strings, languageData.languageId, statusUpdate );
 
         const translatedJSON = translate.replaceWithTranslatedValues( result, FILE_SUBMITTED );
 
-        mainWindow.webContents.send( "translate:success", translatedJSON );
+        mainWindow.webContents.send( "translate:success", { json: translatedJSON, language: languageData.languageString } );
     } catch (err) {
         mainWindow.webContents.send( "translate:error", err.message );
         console.log( err.message );

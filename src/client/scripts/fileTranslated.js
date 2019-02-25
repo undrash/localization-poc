@@ -3,6 +3,7 @@
 const fileTranslatedContainer   = document.getElementById( "file-translated-container" );
 const saveFileBtn               = document.getElementById( "save-file-btn" );
 const fileTranslatedBackBtn     = document.getElementById( "file-translate-back-btn" );
+const fileTranslatedDescription = document.getElementById( "file-translated-description" );
 
 function download(data, filename, type) {
     let file                = new Blob([data], {type: type});
@@ -23,11 +24,13 @@ fileTranslatedBackBtn.addEventListener( "click", () => {
 
 /** Electron listeners */
 
-ipcRenderer.on( "translate:success", (event, result) => {
+ipcRenderer.on( "translate:success", (event, data) => {
     loadingContainer.style.display          = "none";
     fileTranslatedContainer.style.display   = "block";
 
-    download( JSON.stringify( result, null, 4 ), "translated.json", "application/json")
+    fileTranslatedDescription.innerText = `Your file has been successfully translated to ${ data.language }.`
+
+    download( JSON.stringify( data.json, null, 4 ), "translated.json", "application/json")
 });
 
 

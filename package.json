@@ -1,5 +1,5 @@
 {
-  "name": "localization-poc",
+  "name": "JSON-localization",
   "version": "1.0.0",
   "description": "Localization for application JSON configs",
   "main": "index.js",
@@ -27,10 +27,26 @@
     "electron-builder": "^20.38.5"
   },
   "build": {
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": true,
+      "createDesktopShortcut": true,
+      "installerIcon": "src/client/style/img/icons/icon.ico",
+      "uninstallerIcon": "src/client/style/img/icons/icon.ico",
+      "uninstallDisplayName": "Uninstall JSON Localization"
+    },
     "appId": "com.localization.poc",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "src/client/style/img/icons/icon.ico",
+      "publisherName": "Andrei"
     },
+    "productName": "JSON Localization",
+    "buildVersion": "1.0.0",
+    "copyright": "Andrei 2019",
     "extraFiles": [
       "chromedriver.exe"
     ]
